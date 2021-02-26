@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>There are {{ disputedcount  }} disputed fault in database</p>
+<p>There are {{ pendcount  }} pending fault in database</p>
+<p>There are {{ rectifycount  }} rectified fault in database</p>
+<p>There are {{ observecount  }} under observation fault in database</p>
+<p>There are {{ bmspendcount }} bms pending fault in database</p>
+</br>
+<table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Station Name</th>
+            <th>Department</th>
+            <th> Fault Number</th>
+            <th>Fault Description</th>
+            <th>Fault Date</th>
+            <th>Fault Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for disputed in disputedfault%}
+    <tr>
+            <td>{{disputed.station}}</td>
+            <td>{{disputed.department}}</td>
+            <td>{{disputed.fault_no}}</td>
+            <td>{{disputed.fault_description}}</td>
+            <td>{{disputed.fault_date}}</td>
+            <td>{{disputed.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {%for pending in pendfault%}
+    <tr>
+            <td>{{pending.station}}</td>
+            <td>{{pending.department}}</td>
+            <td>{{pending.fault_no}}</td>
+            <td>{{pending.fault_description}}</td>
+            <td>{{pending.fault_date}}</td>
+            <td>{{pending.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {%for rect in rectify%}
+    <tr>
+            <td>{{rect.station}}</td>
+            <td>{{rect.department}}</td>
+            <td>{{rect.fault_no}}</td>
+            <td>{{rect.fault_description}}</td>
+            <td>{{rect.fault_date}}</td>
+            <td>{{rect.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {%for obser in observe%}
+    <tr>
+            <td>{{obser.station}}</td>
+            <td>{{obser.department}}</td>
+            <td>{{obser.fault_no}}</td>
+            <td>{{obser.fault_description}}</td>
+            <td>{{obser.fault_date}}</td>
+            <td>{{obser.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for fault in faultdetails %}
+        <tr>
+            <td>{{fault.station}}</td>
+            <td>{{fault.department}}</td>
+            <td>{{fault.fault_no}}</td>
+            <td>{{fault.fault_description}}</td>
+            <td>{{fault.fault_date}}</td>
+            <td>{{fault.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for azp in azpfaults %}
+        <tr>
+            <td>{{azp.station}}</td>
+            <td>{{azp.department}}</td>
+            <td>{{azp.fault_no}}</td>
+            <td>{{azp.fault_description}}</td>
+            <td>{{azp.fault_date}}</td>
+            <td>{{azp.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for slm in slmfaults %}
+        <tr>
+            <td>{{slm.station}}</td>
+            <td>{{slm.department}}</td>
+            <td>{{slm.fault_no}}</td>
+            <td>{{slm.fault_description}}</td>
+            <td>{{slm.fault_date}}</td>
+            <td>{{slm.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for nsp in nspfaults %}
+        <tr>
+            <td>{{nsp.station}}</td>
+            <td>{{nsp.department}}</td>
+            <td>{{nsp.fault_no}}</td>
+            <td>{{nsp.fault_description}}</td>
+            <td>{{nsp.fault_date}}</td>
+            <td>{{nsp.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for nai in naifaults %}
+        <tr>
+            <td>{{nai.station}}</td>
+            <td>{{nai.department}}</td>
+            <td>{{nai.fault_no}}</td>
+            <td>{{nai.fault_description}}</td>
+            <td>{{nai.fault_date}}</td>
+            <td>{{nai.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for bms in bmsfaults %}
+        <tr>
+            <td>{{bms.station}}</td>
+            <td>{{bms.department}}</td>
+            <td>{{bms.fault_no}}</td>
+            <td>{{bms.fault_description}}</td>
+            <td>{{bms.fault_date}}</td>
+            <td>{{bms.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for elec in electfaults %}
+        <tr>
+            <td>{{elec.station}}</td>
+            <td>{{elec.department}}</td>
+            <td>{{elec.fault_no}}</td>
+            <td>{{elec.fault_description}}</td>
+            <td>{{elec.fault_date}}</td>
+            <td>{{elec.status}}</td>
+        </tr>
+        {% endfor %}
+
+        {% for ecs in ecsfaults %}
+        <tr>
+            <td>{{ecs.station}}</td>
+            <td>{{ecs.department}}</td>
+            <td>{{ecs.fault_no}}</td>
+            <td>{{ecs.fault_description}}</td>
+            <td>{{ecs.fault_date}}</td>
+            <td>{{ecs.status}}</td>
+        </tr>
+        {% endfor %}
+
+         {% for tvs in tvsfaults %}
+        <tr>
+            <td>{{tvs.station}}</td>
+            <td>{{tvs.department}}</td>
+            <td>{{tvs.fault_no}}</td>
+            <td>{{tvs.fault_description}}</td>
+            <td>{{tvs.fault_date}}</td>
+            <td>{{tvs.status}}</td>
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+ {% load static %}
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Annual) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Rectified Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pending Faults
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ disputedcount}}</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Disputed Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

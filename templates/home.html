@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block content %}
+                <!-- Begin Page Content -->
+                {% load static %}
+
+
+
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Annual) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Rectified Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pending Faults
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><p>{{ odisputedcount}}</p></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Disputed Faults</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+<div class="grid">
+		<div class="row">
+        <div class="col-md-3 d-none d-sm-block  text-center"></div>
+        <div class="col-md-3 text-center"><a class=" btn btn-primary" href="{% url 'admin:index'%}">Add / Update Fault</a></div>
+        
+			<div class="col-md-3 text-center"><a class="btn btn-primary" href="{% url 'complaints'%}">View Faults</a></div>
+            <div class="col-md-3 d-none d-sm-block text-center"></div>
+			
+		</div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-3 d-none d-sm-block text-center">
+         <canvas id="myChart" width="10%", height="10%"></canvas>
+  <script src="{% static 'cms/js/chart.js'%}"></script>
+  <script src="{% static 'cms/js/custom.js'%}"></script>
+        
+        </div>
+			<div class="col-md-3 col-xs-6 text-center"><a class="btn btn-primary" href="{% url 'disputed'%}">Disputed Faults</a></div>
+            <div class="col-md-3 col-xs-6 text-center"><a class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">View Faults by Status</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'pending'%}">Pending</a></li>
+                <li><a class="dropdown-item" href="{% url 'rectified'%}">Rectified</a></li>
+                <li><a class="dropdown-item" href="{% url 'disputed'%}">Disputed</a></li>
+                <li><a class="dropdown-item" href="{% url 'observation'%}">Under Observation</a></li>
+            </ul></div>
+			<div class="col-md-3 d-none d-sm-block text-center"></div>
+		</div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-3 d-none d-sm-block text-center"></div>
+			<div class="col-md-3 text-center"><a class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">View Faults by Station</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'azp'%}">Azadpur</a></li>
+                <li><a class="dropdown-item" href="{% url 'slm'%}">Shalimar Bagh</a></li>
+                <li><a class="dropdown-item" href="{% url 'nsp'%}">Netaji Subhash Place</a></li>
+                <li><a class="dropdown-item" href="{% url 'nai'%}">Naraina Vihar</a></li>
+            </ul>
+            </div>
+            <div class="col-md-3 text-center"><a class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">View Faults by Department</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'bms'%}"> BMS </a></li>
+                <li><a class="dropdown-item" href="{% url 'elec'%}"> Electrical </a></li>
+                <li><a class="dropdown-item" href="{% url 'ecs'%}"> ECS </a></li>
+                <li><a class="dropdown-item" href="{% url 'tvs'%}"> TVS </a></li>
+            </ul></div>
+			<div class="col-md-3 d-none d-sm-block text-center"></div>
+		</div>
+        </div>
+{% load static %}
+
+<div id="container" style="width: 75%;">
+    <canvas id="pie-chart"></canvas>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+<script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'fault_no'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
+
+
+{% endblock %}
